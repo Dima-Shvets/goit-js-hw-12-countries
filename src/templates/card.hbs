@@ -1,0 +1,16 @@
+
+<div class="js-card card">
+    <h2 class="card-title">{{name}}</h2>
+    <ul class="card-list">
+        <li class="card-list-elem">{{capital}}</li>
+        <li class="card-list-elem">{{population}}</li>
+        <li class="card-list-elem">
+            <ul class="card-list-list">
+                {{#each languages}}
+                <li class="card-list-list-elem">{{name}}</li>
+                {{/each}}
+            </ul>
+        </li>
+    </ul>
+    <img class="card-picture" src={{flags.png}} alt={{name}}>
+</div>
