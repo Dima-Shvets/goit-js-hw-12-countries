@@ -1,7 +1,60 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+// .list {
+//   list-style: none;
+// }
+
+.query {
+  border: 1px solid #585858;
+  border-radius: 5px;
+
+  margin-top: 40px;
+  margin-left: 20px;
+  min-width: 400px;
+  height: 50px;
+}
+
+.content-container {
+  margin-top: 30px;
+}
+
+.countries-list {
+  padding-left: 60px;
+}
+
+.countries-list-elem:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.card {
+  min-width: 800px;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-list-elem-title,
+.card-list-elem-text {
+  display: inline-block;
+}

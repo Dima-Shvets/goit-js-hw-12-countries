@@ -1,4 +1,4 @@
-// import './sass/main.scss';
+import '../sass/main.scss';
 import { error } from '@pnotify/core'
 import { defaults } from '@pnotify/core'
 import "@pnotify/core/dist/PNotify.css";
@@ -18,21 +18,23 @@ refs.input.addEventListener('input', debounce(onInputChange, 500));
 
 function onInputChange(e) {
     const inputValue = e.target.value;
+    if (inputValue === "") {
+           refs.content.innerHTML = ""; 
+    };
     fetchCountries(inputValue).then(countries => {
-               
             if (countries.length === 1) {
-                const markup = countryCardTpl(...countries);
-                refs.content.innerHTML = markup;
+                renderMarkup(...countries, countryCardTpl)
                 return
             };
             
             if (countries.length > 2 && countries.length < 10) {
-                const markup = countriesListTpl(countries);
-                refs.content.innerHTML = markup;
+                renderMarkup(countries, countriesListTpl)
                 return
             };
 
-            showNotification();
+            if (countries.length > 10) {
+                showNotification();   
+            }
     })
 }
 
@@ -43,4 +45,8 @@ function showNotification () {
     refs.content.innerHTML = "";
 }
 
+function renderMarkup(countries, template) {
+    const markup = template(countries);
+    refs.content.innerHTML = markup;
+}
 
