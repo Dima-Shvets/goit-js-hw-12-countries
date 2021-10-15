@@ -13,9 +13,20 @@ ol {
   padding-left: 0;
 }
 
-// .list {
-//   list-style: none;
-// }
+.list {
+  list-style: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-title {
+  margin-top: 20px;
+  text-align: center;
+
+  font-size: 60px;
+}
 
 .query {
   border: 1px solid #585858;
@@ -33,6 +44,8 @@ ol {
 
 .countries-list {
   padding-left: 60px;
+
+  font-size: 20px;
 }
 
 .countries-list-elem:not(:last-child) {
@@ -40,7 +53,7 @@ ol {
 }
 
 .card {
-  min-width: 800px;
+  width: fit-content;
 }
 
 .card-title {
@@ -52,9 +65,31 @@ ol {
 .card-content {
   display: flex;
   flex-direction: row;
+
+  margin-left: 20px;
 }
+
+.card-list {
+  margin-right: 25px;
+}
+
+.card-list-elem {
+  font-size: 20px;
+}
+
+// .card-list-elem-title {
+//   font-size: 20px;
+// }
 
 .card-list-elem-title,
 .card-list-elem-text {
   display: inline-block;
+}
+
+.card-list-elem:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.card-list-list {
+  padding-left: 25px;
 }
