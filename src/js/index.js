@@ -18,36 +18,41 @@ defaults.delay = 3000;
 refs.input.addEventListener('input', debounce(onInputChange, 500));
 
 function onInputChange(e) {
-    const inputValue = e.target.value;
+    const inputValue = e.target.value.trim();
     if (inputValue === "") {
         clearContent();
+        return
     };
-    fetchCountries(inputValue).then(countries => {
+
+    fetchCountries(inputValue)
+        .then(countries => {
         if (countries.status === 404) {
-            const message = 'There is no such country!';
-            showNotification(message);
-            clearContent();
+            onError();
         };
 
-            if (countries.length === 1) {
-                renderMarkup(...countries, countryCardTpl);
-                return
-            };
-            
-            if (countries.length > 2 && countries.length < 10) {
-                renderMarkup(countries, countriesListTpl);
-                return
-            };
+        if (countries.length === 1) {
+            renderMarkup(...countries, countryCardTpl);
+            return
+        };
+
+        if (countries.length >= 2 && countries.length <= 10) {
+            renderMarkup(countries, countriesListTpl);
+            return
+        };
 
         if (countries.length > 10) {
             const message = "Too many matches found. Please enter a more specific query!";
             showNotification(message);
             clearContent();
         };
-    })
+        })
+        .catch((error) => {
+            console.log(error)
+            onError();
+        })
 };
 
-function showNotification (message) {
+function showNotification(message) {
     error({
         text: `${message}`,
     });
@@ -61,4 +66,10 @@ function renderMarkup(countries, template) {
 function clearContent() {
     refs.content.innerHTML = "";
 };
+
+function onError() {
+    const message = 'There is no such country!';
+            showNotification(message);
+            clearContent();
+}
 
